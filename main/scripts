@@ -1,0 +1,42 @@
+import streamlit as st
+
+# Title of the app
+st.title("Emoji and Text Radio Button App")
+
+# Create a 2-column layout
+col1, col2 = st.columns([1, 2])
+
+# Place emojis in the first column (top)
+with col1:
+    st.subheader("Select a Fruit Emoji:")
+    emoji_options = [
+        "🍏 Apple",
+        "🍌 Banana",
+        "🍒 Cherries",
+        "🍉 Watermelon",
+        "🍇 Grapes",
+        "🍓 Strawberry",
+        "🍊 Orange",
+        "🍍 Pineapple"
+    ]
+    selected_emoji = st.radio("Choose an emoji:", emoji_options)
+
+# Place text options in the second column (bottom)
+with col2:
+    st.subheader("Select your favorite fruit:")
+    fruit_options = {
+        "Apple": "Apple is a sweet, crunchy fruit.",
+        "Banana": "Bananas are rich in potassium.",
+        "Cherries": "Cherries are small and tart.",
+        "Watermelon": "Watermelons are juicy and hydrating.",
+        "Grapes": "Grapes are small and often used in wine-making.",
+        "Strawberry": "Strawberries are juicy and red.",
+        "Orange": "Oranges are citrus fruits full of vitamin C.",
+        "Pineapple": "Pineapples are tropical and sweet."
+    }
+    
+    # Map the emoji selection to text description
+    if selected_emoji:
+        fruit_name = selected_emoji.split(" ")[1]  # Extract the fruit name from the emoji
+        description = fruit_options.get(fruit_name, "No description available.")
+        st.write(f"Description: {description}")
